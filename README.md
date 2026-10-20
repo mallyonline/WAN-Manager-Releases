@@ -1,13 +1,29 @@
-# WAN Manager — public prereleases
+# WAN Manager
 
-A modern Windows workspace for monitoring multiple internet connections and testing per-connection IPv4 WAN load balancing.
+A Windows x64 workspace for multiple internet connections, connection-level IPv4 load balancing and live network diagnostics.
 
-**First release: 0.1.0-preview.1 — experimental, not production-ready.** Intermittent throughput stalls remain unresolved. This is not single-connection bonding; VPN aggregation is not guaranteed.
+**Current prerelease: 0.1.0-preview.2 Â· application/engine 2026.10.18.8.** Documentation refreshed 20 October 2026. Evaluation software: broader clean-machine, sustained-stream and recovery testing remains open.
 
-[Download prereleases](https://github.com/mallyonline/WAN-Manager-Releases/releases) · [Getting started](GETTING-STARTED.md) · [Release notes and limitations](RELEASE-NOTES.md) · [Recovery](RECOVERY.md)
+[Download Windows x64 installer](https://github.com/mallyonline/WAN-Manager-Releases/releases/download/v0.1.0-preview.2/WAN-Manager-2026.10.18.8-Setup-x64.exe) Â· [Release and checksums](https://github.com/mallyonline/WAN-Manager-Releases/releases/tag/v0.1.0-preview.2) Â· [Getting started](GETTING-STARTED.md) Â· [User guide](USER-GUIDE.md) Â· [Troubleshooting](TROUBLESHOOTING.md) Â· [Release notes](RELEASE-NOTES.md)
 
-Windows x64 portable ZIP. Separate Npcap, compatible TAP-Windows and legacy capture-runtime prerequisites are required for balancing. No network drivers are bundled. No service installation is needed. Applications are unsigned. Review the included SHA-256 checksum and keep all extracted files together.
+## What it does
 
-This repository contains public downloads and documentation only. Development source and history remain private. WAN Manager is based on Network Manager by SortByte; original MIT and dependency notices are preserved in each download. Third-party components retain their respective licences.
+- Guided setup loads the background engine, checks connections and readiness, then asks you to choose at least two reachable WANs and accept the disclaimer.
+- Overview shows stable adapter cards, live throughput, WAN share and simultaneous combined session peak.
+- Modern IP Sessions includes opt-in Byte Counter, filtering, plain-text export and a detachable/full-screen window.
+- Routes includes saved routes, guarded editing, IPv4 ping/trace and assignment counts/charts. Settings includes TAP settings and adapter property help.
+- Speed test compares each selected WAN with combined throughput and exports results to text. Light/dark/system appearance and a global Stop control are included.
 
-Report reproducible issues here with sensitive addresses and URLs removed. No automated telemetry or log upload is used for bug reports.
+## Before installing
+
+The installer includes the modern .NET runtime and compatibility engine. It does not install a Windows service or network drivers. Balancing requires separately installed .NET Framework 4.8, the legacy x64 VC++ 2010 runtime, compatible Npcap and TAP-Windows components; see Getting started. Keep working drivers installed. The app is unsigned.
+
+Load balancing distributes connections; it is not single-stream bonding. A poor WAN may reduce performance. VPN/kill-switch combinations are not guaranteed. Byte Counter may affect media players. Speed results are a time-specific measurement, not guaranteed future capacity. Historical stalls and uneven throughput have been reported; recent successful tests do not establish universal reliability.
+
+## Install, upgrade and stop
+
+Stop balancing, exit the background engine normally and close the workspace before upgrading. Run the installer, open WAN Manager from its shortcut and follow Setup & help. Close workspace leaves the engine running. Use the red Stop button to stop balancing, then Settings > Exit engine or the engine tray Exit option to end it.
+
+[Recovery guide](https://github.com/mallyonline/WAN-Manager-Releases/blob/main/RECOVERY.md) Â· [All releases, including older portable builds](https://github.com/mallyonline/WAN-Manager-Releases/releases) Â· [Report an issue](https://github.com/mallyonline/WAN-Manager-Releases/issues)
+
+This public repository contains downloads and documentation only; development source remains private. Based on Network Manager by SortByte. Original MIT and third-party notices accompany downloads. Do not upload unredacted IPs, stream URLs/tokens, configuration or packet contents in issue reports.
