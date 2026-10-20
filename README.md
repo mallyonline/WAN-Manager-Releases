@@ -2,9 +2,9 @@
 
 A Windows x64 workspace for multiple internet connections, connection-level IPv4 load balancing and live network diagnostics.
 
-**Current prerelease: 0.1.0-preview.2 Â· application/engine 2026.10.18.8.** Documentation refreshed 20 October 2026. Evaluation software: broader clean-machine, sustained-stream and recovery testing remains open.
+**Current prerelease: 0.1.0-preview.3 Â· UI 2026.10.20.1 / engine 2026.10.18.8.** Documentation refreshed 20 October 2026. Evaluation software: broader clean-machine, sustained-stream and recovery testing remains open.
 
-[Download Windows x64 installer](https://github.com/mallyonline/WAN-Manager-Releases/releases/download/v0.1.0-preview.2/WAN-Manager-2026.10.18.8-Setup-x64.exe) Â· [Release and checksums](https://github.com/mallyonline/WAN-Manager-Releases/releases/tag/v0.1.0-preview.2) Â· [Getting started](GETTING-STARTED.md) Â· [User guide](USER-GUIDE.md) Â· [Troubleshooting](TROUBLESHOOTING.md) Â· [Release notes](RELEASE-NOTES.md)
+[Download Windows x64 installer](https://github.com/mallyonline/WAN-Manager-Releases/releases/download/v0.1.0-preview.3/WAN-Manager-2026.10.20.1-Setup-x64.exe) Â· [Release and checksums](https://github.com/mallyonline/WAN-Manager-Releases/releases/tag/v0.1.0-preview.3) Â· [Getting started](GETTING-STARTED.md) Â· [User guide](USER-GUIDE.md) Â· [Troubleshooting](TROUBLESHOOTING.md) Â· [Release notes](RELEASE-NOTES.md)
 
 ## What it does
 
@@ -27,3 +27,7 @@ Stop balancing, exit the background engine normally and close the workspace befo
 [Recovery guide](https://github.com/mallyonline/WAN-Manager-Releases/blob/main/RECOVERY.md) Â· [All releases, including older portable builds](https://github.com/mallyonline/WAN-Manager-Releases/releases) Â· [Report an issue](https://github.com/mallyonline/WAN-Manager-Releases/issues)
 
 This public repository contains downloads and documentation only; development source remains private. Based on Network Manager by SortByte. Original MIT and third-party notices accompany downloads. Do not upload unredacted IPs, stream URLs/tokens, configuration or packet contents in issue reports.
+
+## Dependency setup
+
+Choose **Install Missing Dependencies** in Settings or the welcome wizard. Missing prerequisites are downloaded from official vendors and their signatures verified before setup opens. Approve Windows elevation and vendor terms. Working components are skipped. Stop balancing and exit the background engine before installing; the workspace stays open. See [Getting started](GETTING-STARTED.md) for details.
