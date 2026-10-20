@@ -17,3 +17,7 @@ Applies to 2026.10.18.8. Preserve working configuration and change one thing at 
 | Network remains affected after stopping | Follow RECOVERY.md. Do not delete all gateways, reset every adapter or force-kill the engine expecting rollback. |
 
 Report version, Windows version, adapter types, intended VPN/kill-switch state, exact steps and messages at https://github.com/mallyonline/WAN-Manager-Releases/issues. Redact IPs, stream URLs/tokens and configuration. Logs/configuration are local beside the engine. No automatic bug-report upload occurs.
+
+## Installing missing prerequisites (UI 2026.10.20.1)
+
+Choose Install Missing Dependencies in Settings or Setup & help. Stop balancing and exit the engine first; the workspace stays open. Review missing components, allow downloads, and complete each signed vendor installer. For Npcap enable WinPcap API-compatible Mode. Cancellation or failure stops the sequence. Restart only if requested, then Check again. An installed TAP may still be unavailable to the engine: fresh wizard readiness checks determine usability.
