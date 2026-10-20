@@ -30,3 +30,7 @@ Results are a snapshot, not a future-performance guarantee. Signal, congestion, 
 More-specific routes take precedence; metrics help select equally specific routes. A wrong default route, gateway or mask can interrupt internet and remote access. Read the in-app editor help, preserve working values and review every confirmation. Historical mobile gateways should be left alone unless a specific fault is established.
 
 Stop balancing using the red Stop control, exit the engine through Settings or its tray Exit option, then close the workspace. Closing the UI does not terminate balancing. Capture owned by the workspace is stopped on closure and has a disconnection expiry safeguard. No automatic route rollback or Windows Service recovery is guaranteed.
+
+## Installing missing prerequisites (UI 2026.10.20.1)
+
+Choose Install Missing Dependencies in Settings or Setup & help. Stop balancing and exit the engine first; the workspace stays open. Review missing components, allow downloads, and complete each signed vendor installer. For Npcap enable WinPcap API-compatible Mode. Cancellation or failure stops the sequence. Restart only if requested, then Check again. An installed TAP may still be unavailable to the engine: fresh wizard readiness checks determine usability.
