@@ -1,27 +1,27 @@
-# WAN Manager 0.1.0-preview.1
+# WAN Manager 0.1.0-preview.2
 
-First public Windows x64 prerelease. Build 2026.9.28.3. For evaluation on a recoverable test setup; this is not a production-stability release.
+Application and engine **2026.10.18.8**. Public documentation refreshed 20 October 2026. An evaluation prerelease, not a stable release.
 
-## Included
+## Changes since preview.1
 
-- Modern .NET 10 / Avalonia desktop: live adapter graphs, stable card positions, combined traffic and simultaneous session peak, light/dark/system/night themes.
-- WAN selection, availability checks and Start/Stop. Independent round-robin assignment of new TCP and UDP flows; existing connections remain pinned.
-- Per-WAN flow-assignment counters, local URL diagnostics, compatibility IP Sessions and adapter/routing tools.
-- Byte Counter is opt-in. Shutdown/restart handling prevents overlapping capture workers.
-- Manual updates; no legacy upstream automatic updater. No network drivers are bundled.
+- One modern Avalonia workspace for guided setup, IP Sessions, active/saved routes, TAP settings and adapter properties.
+- Automatic wizard discovery/readiness progression, clear two-WAN selection, disclaimer overlay and confirmed Success-to-Overview transition.
+- Opt-in capture confirmation works in detached IP Sessions; plain-text export and full-screen/multi-monitor window support.
+- Individual and combined WAN speed tests, three-column results, charts and text export with data-use and variability notices.
+- IPv4 ping/trace, route editor guidance/warnings, assignment counts/charts, consistent fonts and adapter property help.
+- Prominent raised Stop button, accurate selected-WAN participation, WSL Overview filtering and normal tray engine exit.
+- Per-user x64 installer; no drivers or Windows service are installed.
 
-## Known limitations
+## Download
 
-- Intermittent throughput stalls and uneven sustained traffic remain under investigation. Recovery to normal speeds has been observed; packet loss and root cause are not established. Equal flow counts do not mean equal Mbps.
-- Physical-adapter graphs include traffic outside the balancer. Connections opened before balancing may keep using a physical interface. Combined throughput is observed traffic, not a speed test or proof of bonding.
-- VPN detection is advisory; VPN/kill-switch/split-tunnel compatibility is not guaranteed. This is connection-level IPv4 balancing, not single-connection bonding or a VPN aggregation service.
-- Engine requires administrator elevation and .NET Framework 4.8. It remains a separate compatibility process, not an installed Windows service. IP Sessions/full settings still use compatibility controls.
-- Capture can affect media playback. Byte Counter is OFF by default. IPv6 and VPN-tunnel capture coverage are limited.
-- Existing engine metric changes persist; stopping or replacing the binary is not a guaranteed network rollback. Review RECOVERY.md before testing. Hot-plug/crash recovery and clean-machine installation need broader acceptance testing.
-- Application binaries are unsigned. Prerequisite installers are obtained independently from their official vendors. This download has no automatic installer or auto-update service.
+[Windows x64 installer](https://github.com/mallyonline/WAN-Manager-Releases/releases/download/v0.1.0-preview.2/WAN-Manager-2026.10.18.8-Setup-x64.exe) and SHA256SUMS.txt are attached to this release. Read GETTING-STARTED.md before installation. The previous portable preview remains available for history; do not overwrite a working setup with its older files.
 
-## Download and verify
+## Verification and limits
 
-Download the Windows-x64 ZIP and SHA256SUMS.txt from this release. Compare `Get-FileHash .\WAN-Manager-0.1.0-preview.1-windows-x64.zip -Algorithm SHA256` with SHA256SUMS.txt, extract the complete folder, and read GETTING-STARTED.md. Do not run from inside the ZIP.
+Modern/Framework builds, offline wizard/management/capture lifecycle/speed/IPC tests and rendered light/dark layouts passed. The local .8 installation verified 298 packaged files on 18 October; refreshed documentation packaging is separately checked before publication. Live speed testing worked in the preceding .7 build and was confirmed by the user; no benchmark result is a performance guarantee.
 
-No Npcap/Nmap, TAP driver installer, personal settings, IP addresses, logs, test executables or signing tools are included. The source repository remains private; this repository hosts downloads and public documentation only. Third-party licence notices are included with the binary.
+Clean-machine, broader Windows 11, sustained streaming, hot-plug/rollback, native file-picker/multi-monitor and capture/player acceptance remain open. Historical intermittent stalls and uneven throughput are not represented as conclusively fixed. Single-flow bonding, guaranteed VPN aggregation and automatic network rollback are not supported claims.
+
+The compatibility engine remains a separate elevated .NET Framework process. The application is unsigned and retains a legacy VC++ 2010 dependency. Npcap/Nmap and TAP installers are not bundled. Full adapter-profile editing, Windows Service extraction, packet metadata and optional video/download panels remain future work.
+
+Source remains private. Licence notices accompany the binaries. [Getting started](GETTING-STARTED.md) Â· [User guide](USER-GUIDE.md) Â· [Troubleshooting](TROUBLESHOOTING.md) Â· [Recovery](https://github.com/mallyonline/WAN-Manager-Releases/blob/main/RECOVERY.md).
