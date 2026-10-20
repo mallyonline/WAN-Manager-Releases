@@ -1,35 +1,39 @@
-# Getting started
+# Getting started â€” 2026.10.18.8
 
 ## Requirements
 
-Windows x64. The development/test machine uses Windows 10; broad Windows 11 and clean-machine validation are pending. The modern desktop includes its .NET 10 runtime; no separate .NET 10 installation or Windows service is needed. The compatibility engine needs .NET Framework 4.8 and administrator elevation.
+Windows x64; installer minimum Windows 10 1809. This is a packaging floor, not a claim of support for every Windows build. Use a supported, updated operating system; broad Windows 11 and clean-machine validation remain pending. The Avalonia workspace bundles .NET 10; the elevated engine uses .NET Framework 4.8. No Windows service installation is required.
 
-For load balancing, separately install the x64 Visual C++ 2010 runtime required by the legacy Pcap.Net capture layer, Npcap with WinPcap-compatible API support, and a compatible TAP-Windows adapter (tap0901). Obtain prerequisites only from official sources:
+Load balancing requires these separately obtained components. Official links checked 20 October 2026:
 
-- Microsoft .NET Framework 4.8: https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48
-- Microsoft Visual C++ runtimes (find the 2010 entry): https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist
-- Npcap: https://npcap.com/#download — review the vendor's licence for your use. Npcap is not redistributed here.
-- OpenVPN TAP-Windows: https://github.com/OpenVPN/tap-windows6/releases — driver installation is separate; do not install a VPN client merely to use WAN Manager. Compatibility with every current driver package is not certified by this preview.
+- [.NET Framework 4.8](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48).
+- [Microsoft VC++ runtime downloads](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist): the legacy Pcap.Net layer needs **2010 SP1 x64**. Microsoft lists this as unsupported legacy software; installing only the newest v14 runtime does not replace this requirement. Engine dependency modernization remains planned.
+- [Npcap](https://npcap.com/#download), with WinPcap-compatible API support. Review the vendor licence for your use. It is not bundled.
+- [Compatible TAP-Windows adapter (tap0901)](https://github.com/OpenVPN/tap-windows6/releases). Compatibility with every package is not certified. Do not install a VPN client merely to use WAN Manager.
 
-Keep working prerequisites already installed. Do not uninstall another application's network adapters to install this preview.
+Keep working prerequisites. Do not uninstall shared network adapters or replace drivers simply because a newer package exists.
 
-## First run
+## Install or upgrade
 
-1. Extract the whole ZIP to a writable folder outside Program Files. Keep the engine subfolder and runtime DLLs together.
-2. Run WanManager.Desktop.exe. It can show local adapter activity without the engine or capture.
-3. Choose Load balancing > Open compatibility controls to launch engine/Network_Manager.exe. Approve Windows elevation if you choose to run network controls. No capture starts just by opening the modern workspace.
-4. Use Refresh adapters, select two independently reachable WANs, and Check availability. Review collapsed Readiness details if checks fail. Start balancing only when the chosen setup is ready.
-5. Reopen test streams/downloads after starting so new connections can use TAP. Equal assignment counts do not guarantee equal bandwidth. Some existing connections may continue on physical WANs.
-6. Stop load balancing before quitting the engine. Closing the modern workspace alone leaves the engine running. Never treat closing its window as proof that balancing stopped.
+1. If upgrading, use Stop, then Settings > Exit engine (balancing stopped), and close the workspace. The installer refuses to update running instances.
+2. Back up the old engine's `Network_Manager.xml` locally after it exits. Do not publish that file.
+3. Download `WAN-Manager-2026.10.18.8-Setup-x64.exe` and `SHA256SUMS.txt` from [preview.2](https://github.com/mallyonline/WAN-Manager-Releases/releases/tag/v0.1.0-preview.2). Run `Get-FileHash .\WAN-Manager-2026.10.18.8-Setup-x64.exe -Algorithm SHA256` and compare the installer entry. Hash matching verifies file integrity, not publisher trust; the installer is unsigned.
+4. Run the installer. It installs per user under `%LOCALAPPDATA%\Programs\WAN Manager`. Existing settings are retained; portable settings are not automatically imported. Do not copy old configuration over an installed working setup without reviewing it.
+5. Open WAN Manager using its Start menu shortcut. No engine or balancing starts merely by installing it.
 
-Byte Counter is off by default. Enable it only when needed; capture may interrupt external players. Phone Wi-Fi, tethering/VPN and PC kill-switch settings affect results. WAN Manager does not automatically change VPN protection to make checks pass.
+## Guided first run
 
-## Upgrade / remove
+1. Open Setup & help and choose Load Controls. Approve Windows elevation if you intend to run the engine.
+2. Connection discovery and readiness checks progress automatically. Completed steps show green ticks; technical details appear on the left. If a check fails, resolve that issue and retry.
+3. Use independent internet sources, such as home broadband plus a phone using cellular data. PC-side checks cannot prove the phone's Wi-Fi/VPN configuration.
+4. Select **at least TWO reachable WANs**. Read the disclaimer overlay, accept it, then choose Start Load Balance. Additional WANs have Previous/More buttons.
+5. Start rechecks the selected WANs, including public-IP reachability. Confirmed Running displays Success and opens Overview. An address alone is not proof of independent capacity: VPNs and carrier NAT can alter the observed IP.
+6. Open fresh streams/downloads to exercise new flow assignments. Existing connections can remain on their earlier path.
 
-Stop balancing, quit the old engine normally and close its modern workspace. Back up the old engine/Network_Manager.xml locally. Extract the new release separately. For existing testers, copy that XML into the new engine folder only after the old engine has exited; review inherited saved routes/startup options. No user configuration is included in the download.
+Use the red Stop button whenever you need to stop balancing. Closing the workspace alone leaves balancing running. Byte Counter stays off until you explicitly enable it.
 
-To remove, stop balancing and exit both processes, then remove the extracted folder. Drivers are external and may be shared; leave their removal to their official installers and your own configuration review. See RECOVERY.md for network recovery. Binary rollback does not restore prior metrics/routes automatically.
+## Remove or roll back
 
-## Report a problem
+Stop balancing, exit the engine and close the workspace. Uninstall through Windows Installed apps / Apps & features. User-created configuration/logs may remain; external drivers remain installed. Preserve a configuration backup before replacing a newer build with an older one; compatibility is not guaranteed. Binary rollback does not restore prior routes or metrics. See [Recovery](https://github.com/mallyonline/WAN-Manager-Releases/blob/main/RECOVERY.md).
 
-Use Issues in https://github.com/mallyonline/WAN-Manager-Releases and include version, Windows version, adapter types, whether VPN/kill switch was active, steps, expected/actual results and whether streams began before balancing. Redact public/local IPs, stream URLs/tokens and personal data from screenshots/logs. Do not upload Network_Manager.xml or full packet payloads without reviewing them. Logs are local in the engine folder; WAN Manager does not automatically upload them.
+Continue with the [User guide](USER-GUIDE.md) or [Troubleshooting](TROUBLESHOOTING.md).
